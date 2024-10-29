@@ -41,7 +41,6 @@ vim.diagnostic.config({
     virtual_text = true,  -- Disable virtual text if you don't want inline errors
     float = {
         border = "rounded",
-        wrap = true,  -- Enable wrapping in diagnostic floats
     },
 })
 
