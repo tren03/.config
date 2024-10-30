@@ -17,3 +17,12 @@ for FILE in "${FILES[@]}"; do
     fi
 done
 
+# Navigate to tmux plugin directory and remove .git if it exists
+if [ -d "tmux/plugin/tmux-yank/.git" ]; then
+    cd tmux/plugin/tmux-yank || exit
+    rm -rf .git
+    echo ".git directory removed from tmux-yank."
+else
+    echo "tmux/plugin/tmux-yank/.git does not exist, skipping."
+fi
+
