@@ -22,31 +22,35 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
-vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '[', '[zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', ']', ']zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>y', ':%y+<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[", "[zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "]", "]zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>y", ":%y+<CR>", { noremap = true, silent = true })
 
 -- Highlight on yank
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = 'IncSearch',  -- Highlight group to use
-            timeout = 300,           -- Time in milliseconds the highlight lasts
-        })
-    end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch", -- Highlight group to use
+			timeout = 300, -- Time in milliseconds the highlight lasts
+		})
+	end,
 })
-
 
 vim.diagnostic.config({
-    virtual_text = true,  -- Disable virtual text if you don't want inline errors
-    float = {
-        border = "rounded",
-    },
+	virtual_text = true, -- Disable virtual text if you don't want inline errors
+	float = {
+		border = "rounded",
+	},
 })
 
-
+vim.cmd([[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]])
 
 -- Simple brace generation without adding lines or indent -> this has been done with mini-pairs
 -- vim.api.nvim_set_keymap('i', '{', '{}<Esc>i', { noremap = true, silent = true })
@@ -56,9 +60,7 @@ vim.diagnostic.config({
 -- vim.api.nvim_set_keymap('i', "'", "''<Esc>i", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('i', '`', '``<Esc>i', { noremap = true, silent = true })
 
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "number"
 require("lazy").setup("plugins")
-

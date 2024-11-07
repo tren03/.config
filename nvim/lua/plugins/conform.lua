@@ -9,7 +9,10 @@ return {
 				lua = { "stylua" },
 				-- Conform will run multiple formatters sequentially for Go
 				go = { "goimports", "gofmt" },
-                python = {"black"}
+                python = {"black"},
+                javascript = {"prettier"},
+                typescript = {"prettier"},
+
 			},
 		})
 		-- Keymap to run the formatter with `gf`
