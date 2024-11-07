@@ -45,12 +45,6 @@ vim.diagnostic.config({
 	},
 })
 
-vim.cmd([[
-  highlight Normal guibg=none
-  highlight NonText guibg=none
-  highlight Normal ctermbg=none
-  highlight NonText ctermbg=none
-]])
 
 -- Simple brace generation without adding lines or indent -> this has been done with mini-pairs
 -- vim.api.nvim_set_keymap('i', '{', '{}<Esc>i', { noremap = true, silent = true })
