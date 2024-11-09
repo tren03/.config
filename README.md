@@ -2,6 +2,7 @@
 ## Notes to self
 This nvim config works on ubuntu OS: Ubuntu 22.04.5 LTS x86_64
 For transparent background, make sure you have a compositor like picom. (It works with i3wm)
+I use feh to set background in my i3 config, so it applied by default when the system starts
 
 Do not use the gnome terminal, I use kitty to support transparent terms, and the config and text look much more clearer in kitty.
 
