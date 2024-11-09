@@ -46,6 +46,7 @@ vim.diagnostic.config({
 })
 
 
+
 -- Simple brace generation without adding lines or indent -> this has been done with mini-pairs
 -- vim.api.nvim_set_keymap('i', '{', '{}<Esc>i', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('i', '(', '()<Esc>i', { noremap = true, silent = true })
