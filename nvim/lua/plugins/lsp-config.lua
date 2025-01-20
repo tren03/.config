@@ -3,6 +3,9 @@ return {
 	-- installs the language servers
 	{
 		"williamboman/mason.nvim",
+		cond = function()
+			return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+		end,
 		config = function()
 			require("mason").setup({
 				ui = {
@@ -18,18 +21,21 @@ return {
 	-- allows us to install servers by adding them to ensure install array
 	{
 		"williamboman/mason-lspconfig.nvim",
+		cond = function()
+			return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+		end,
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"gopls",
+					-- "gopls",
 					"ts_ls",
 					"clangd",
 					"cssls",
 					"bashls",
 					"html",
 					"pyright",
-					"pylsp",
+					-- "pylsp",
 				},
 			})
 		end,
@@ -37,13 +43,19 @@ return {
 	-- hooks up neovim to the language server
 	{
 		"neovim/nvim-lspconfig",
+		cond = function()
+			return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+		end,
 		config = function()
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
-			})
+
+			-- will install go later :)
+			-- lspconfig.gopls.setup({
+			-- 	capabilities = capabilities,
+			-- })
 			lspconfig.ts_ls.setup({
+
 				capabilities = capabilities,
 			})
 			lspconfig.lua_ls.setup({
@@ -66,13 +78,26 @@ return {
 				capabilities = capabilities,
 			})
 
-			--	lspconfig.pyright.setup({
-			--		capabilities = capabilities,
-			--	})
-
-			lspconfig.pylsp.setup({
+			lspconfig.pyright.setup({
 				capabilities = capabilities,
 			})
+
+			-- lspconfig.basedpyright.setup({
+			-- 	capabilities = capabilities,
+			-- })
+
+			lspconfig.tailwindcss.setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig.yamlls.setup({
+				capabilities = capabilities,
+			})
+
+			-- lspconfig.pylsp.setup({
+			-- 	capabilities = capabilities,
+			-- })
+
 			local lsp = vim.lsp
 			lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
 				border = "rounded",
@@ -86,8 +111,14 @@ return {
 			vim.keymap.set("n", "<leader>vrr", function()
 				vim.lsp.buf.references()
 			end, {})
+			vim.keymap.set("n", "<leader>vra", function()
+				vim.lsp.buf.rename()
+			end, {})
 			vim.keymap.set("n", "<leader>vd", function()
 				vim.diagnostic.open_float()
+			end, {})
+			vim.keymap.set("n", "<leader>vws", function()
+				vim.lsp.buf.workspace_symbol()
 			end, {})
 		end,
 	},

@@ -1,6 +1,9 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
+		cond = function()
+			return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+		end,
 		tag = "0.1.8",
 		-- or                              , branch = '0.1.x',
 		dependencies = { "nvim-lua/plenary.nvim", "sharkdp/fd" },
@@ -9,18 +12,23 @@ return {
 			vim.keymap.set("n", "<leader>ff", function()
 				require("telescope.builtin").find_files({ hidden = false })
 			end, {})
+			vim.keymap.set("n", "<leader>fw", function()
+				require("telescope.builtin").lsp_dynamic_workspace_symbols()
+			end, { desc = "Search dynamic workspace symbols" })
 
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-            vim.keymap.set("n","<leader>fd",builtin.diagnostics, {})
-            vim.keymap.set("n","<leader>fm",builtin.man_pages, {})
-            vim.keymap.set("n","<leader>fn",builtin.current_buffer_fuzzy_find, {})
-
+			vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
+			vim.keymap.set("n", "<leader>fm", builtin.man_pages, {})
+			vim.keymap.set("n", "<leader>fn", builtin.current_buffer_fuzzy_find, {})
 		end,
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
+		cond = function()
+			return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+		end,
 
 		config = function()
 			-- This is your opts table

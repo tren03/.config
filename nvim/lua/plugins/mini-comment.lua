@@ -7,8 +7,7 @@ return {
 	end,
 }
 
-
--- *** These are the default settings, if we do not copy anything inside setup *** 
+-- *** These are the default settings, if we do not copy anything inside setup ***
 -- {
 --   -- Options which control module behavior
 --   options = {
@@ -32,7 +31,7 @@ return {
 --     comment = 'gc',
 --
 --     -- Toggle comment on current line
-    -- comment_line = 'gcc',
+-- comment_line = 'gcc',
 --
 --     -- Toggle comment on visual selection
 --     comment_visual = 'gc',

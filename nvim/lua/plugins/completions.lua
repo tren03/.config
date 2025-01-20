@@ -1,9 +1,15 @@
 return {
 	{
 		"hrsh7th/cmp-nvim-lsp",
+		cond = function()
+			return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+		end,
 	},
 	{
 		"L3MON4D3/LuaSnip",
+		cond = function()
+			return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+		end,
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip", -- for autocompletion
 			"rafamadriz/friendly-snippets", -- useful snippets
@@ -15,6 +21,9 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
+		cond = function()
+			return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+		end,
 		config = function()
 			local cmp = require("cmp")
 

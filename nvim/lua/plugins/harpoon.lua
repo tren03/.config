@@ -1,5 +1,8 @@
 return {
 	"ThePrimeagen/harpoon",
+	cond = function()
+		return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+	end,
 	branch = "harpoon2",
 	config = function()
 		local harpoon = require("harpoon")

@@ -1,5 +1,8 @@
 return {
 	"stevearc/oil.nvim",
+	cond = function()
+		return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+	end,
 	opts = {},
 	-- Optional dependencies
 	dependencies = { "nvim-tree/nvim-web-devicons" },

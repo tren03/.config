@@ -1,5 +1,8 @@
 return {
 	"echasnovski/mini.pairs",
+	cond = function()
+		return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+	end,
 	version = "*",
 	config = function()
 		local config = require("mini.pairs")
@@ -7,9 +10,7 @@ return {
 	end,
 }
 
-
-
--- *** These are the default settings, if we do not copy anything inside setup *** 
+-- *** These are the default settings, if we do not copy anything inside setup ***
 --
 -- {
 --   -- In which modes mappings from this `config` should be created

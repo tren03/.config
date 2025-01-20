@@ -1,15 +1,17 @@
 return {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    config = function()
-        require("catppuccin").setup({
-            flavour = "mocha",
-            transparent_background = true, -- disables setting the background color.
-        })
+	"catppuccin/nvim",
+	cond = function()
+		return not vim.g.vscode -- Ensure this plugin is only loaded in Neovim
+	end,
+	name = "catppuccin",
+	priority = 1000,
+	config = function()
+		require("catppuccin").setup({
+			flavour = "mocha",
+		})
 
-        vim.cmd.colorscheme("catppuccin")
-    end,
+		vim.cmd.colorscheme("catppuccin")
+	end,
 }
 
 -- return {
@@ -370,4 +372,3 @@ return {
 -- 		vim.api.nvim_command("colorscheme catppuccin-frappe")
 -- 	end,
 -- }
-
